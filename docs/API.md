@@ -40,6 +40,7 @@ The request body should contain a JSON object with the following properties:
     "ExpireAt": "2024-01-01T00:00:00Z",
     "ImagePaths": []
 }
+```
 
 ### Add Image to Article
 
@@ -61,6 +62,7 @@ The request should include a JSON object containing the following:
     "ArticleID": "1",
     "ImagePath": "./images/lion.jpg"
 }
+```
 
 #### Responses
 Success (200 OK): Returns the updated article information with the added image path.
