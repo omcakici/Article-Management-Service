@@ -25,15 +25,18 @@ func NewArticleStorage() *ArticleStorage {
     }
 }
 
+/*
+    In the AddArticle method, an article is safely added to the articles map in ArticleStorage.
+    The use of a mutex lock and defer ensures that this operation is thread-safe and the lock is 
+    appropriately managed. This handling concurrent access to shared resources.
+*/
 // AddArticle adds a new article to the storage
 func (s *ArticleStorage) AddArticle(a *article.Article) {
     s.mu.Lock()
     defer s.mu.Unlock()
     s.articles[a.ID] = a
 }
-/*In the AddArticle method, an article is safely added to the articles map in ArticleStorage.
- The use of a mutex lock and defer ensures that this operation is thread-safe and the lock is 
- appropriately managed. This handling concurrent access to shared resources.*/
+
 
 
 // GetArticle retrieves an article by ID

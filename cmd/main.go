@@ -29,12 +29,16 @@ func main() {
 	}
 }
 
+/*
+	startCleanupRoutine will trigger the RemoveExpiredArticles function of in ArticleStorage every hour. 
+	This setup ensures that service will regularly clean up expired articles without needing to restart the program.
+*/
 func startCleanupRoutine(storage *storage.ArticleStorage) {
-	ticker := time.NewTicker(24 * time.Hour) // daily check
-	for {
-		select {
-		case <-ticker.C:
-			storage.RemoveExpiredArticles() // removes expired articles
-		}
-	}
+    ticker := time.NewTicker(1 * time.Hour) // hourly check // time.NewTicker is a standard way in Go to run repeated tasks at regular intervals,
+    for {
+        select {
+        case <-ticker.C:
+            storage.RemoveExpiredArticles() // removes expired articles
+        }
+    }
 }
