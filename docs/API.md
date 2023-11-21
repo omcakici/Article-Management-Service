@@ -48,26 +48,29 @@ The request body should contain a JSON object with the following properties:
 - **Method**: `POST`
 - **Description**: Adds an image to an existing article by specifying the article's ID and the path of the image.
 
+#### Important Note
+
+For adding an image, you must provide the absolute file system path to the image file. This ensures that the server can accurately locate and verify the image on your system.
+
 #### Request Body
 
 The request should include a JSON object containing the following:
 
 - `ArticleID`: The unique identifier of the article to which the image will be added.
-- `ImagePath`: The file system path where the image is located.
+- `ImagePath`: The absolute file system path where the image is located.
 
 #### Example Request
-
 ```json
 {
     "ArticleID": "1",
-    "ImagePath": "./images/lion.jpg"
+    "ImagePath": "/Users/omercakici/Desktop/article-management-service/cmd/images/giraffe.jpg"
 }
 ```
 
 #### Responses
-Success (200 OK): Returns the updated article information with the added image path.
-Article Not Found (404 Not Found): If the specified article does not exist, it returns an "Article not found" message.
-Maximum Images Exceeded (400 Bad Request): If the article already has the maximum number of images allowed.
+- Success (200 OK): Returns the updated article information with the added image path.
+- Article Not Found (404 Not Found): If the specified article does not exist, it returns an "Article not found" message.
+- Maximum Images Exceeded (400 Bad Request): If the article already has the maximum number of images allowed.
 
 ### List Articles
 
